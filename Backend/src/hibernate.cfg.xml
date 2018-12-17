@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:sqlserver://localhost:1433;databaseName=bd2</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <mapping class="DbPackage.Accounts"/>
+        <mapping class="DbPackage.Company"/>
+        <mapping class="DbPackage.Complaint"/>
+        <mapping class="DbPackage.ControlSchedule"/>
+        <mapping class="DbPackage.Fine"/>
+        <mapping class="DbPackage.Passenger"/>
+        <mapping class="DbPackage.Payroll"/>
+        <mapping class="DbPackage.TicketCollector"/>
+        <mapping class="DbPackage.UserLogin"/>
+        <mapping class="DbPackage.metaCompanyName"/>
+        <mapping class="DbPackage.metaComplaintStatus"/>
+        <mapping class="DbPackage.metaContractType"/>
+        <mapping class="DbPackage.metaDocumentType"/>
+        <mapping class="DbPackage.metaFineType"/>
+        <mapping class="DbPackage.metaJobStatus"/>
+        <mapping class="DbPackage.metaMeanOfTansport"/>
+        <mapping class="DbPackage.metaPaymentStatus"/>
+        <mapping class="DbPackage.metaPermissionType"/>
+        <mapping class="DbPackage.metaRegion"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
