@@ -25,10 +25,10 @@
         <mapping class="DbPackage.metaPaymentStatus"/>
         <mapping class="DbPackage.metaPermissionType"/>
         <mapping class="DbPackage.metaRegion"/>
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
+         <property name="connection.password"/>
+         <property name="connection.username"/>
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+         DB schema will be updated if needed
+         <property name="hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>

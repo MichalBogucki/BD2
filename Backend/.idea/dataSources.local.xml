@@ -12,5 +12,8 @@
       <introspection-schemas>@:@|bd2:dbo,meta</introspection-schemas>
       <legacy-introspector>true</legacy-introspector>
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="84317008-f748-41d9-b2cb-f43ed827131a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MSSQL" exact-version="0" />
+    </data-source>
   </component>
 </project>
