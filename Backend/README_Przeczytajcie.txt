@@ -6,6 +6,6 @@ Aby to zrobić:
 4) Gdy sie otworzy okno "Usług", zjezdzacie w dół listy, domyślnie pewnie nazwa to "SQL SERVER (MSSQLSERVER)"
 klikacie w niego i następnie -> uruchom ponownie.
  ------------------------------------
-5) MYK I DZIAŁA , dziękuję za uwagę:
+5) MYK I DZIAŁA , dziękuję za uwagę: 
 /*Boguc*/
 
