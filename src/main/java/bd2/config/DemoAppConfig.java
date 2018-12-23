@@ -1,6 +1,7 @@
 package bd2.config;
 
-import bd2.entity.Passenger;
+import bd2.entity.*;
+import bd2.entity.meta.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,31 @@ import java.util.logging.Logger;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mssql.properties" })
 public class DemoAppConfig implements WebMvcConfigurer {
+
+	private Class[] entitiesList = new Class[]{
+			//meta
+			CompanyName.class,
+			ComplaintStatus.class,
+			ContractType.class,
+			DocumentType.class,
+			FineType.class,
+			JobStatus.class,
+			MeanOfTransport.class,
+			PaymentStatus.class,
+			PermissionType.class,
+			Region.class,
+			//entities
+			Accounts.class,
+			Company.class,
+			Complaint.class,
+			ControlSchedule.class,
+			Fine.class,
+			Passenger.class,
+			Payroll.class,
+			Ticket.class,
+			TicketCollector.class,
+			UserLogin.class
+	};
 
 	@Autowired
 	private Environment env;
@@ -87,7 +113,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		sessionFactory.setDataSource(myDataSource());
 		sessionFactory.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
 		sessionFactory.setHibernateProperties(getHibernateProperties());
-		sessionFactory.setAnnotatedClasses(Passenger.class);
+		sessionFactory.setAnnotatedClasses(entitiesList);
 
 		return sessionFactory;
 	}

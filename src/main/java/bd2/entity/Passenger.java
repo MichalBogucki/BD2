@@ -1,9 +1,12 @@
 package bd2.entity;
 
+import bd2.entity.meta.DocumentType;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="Passenger")
+@Table(name="dbo.Passenger")
 public class Passenger {
 
 	@Id
@@ -19,6 +22,10 @@ public class Passenger {
 
 	@Column(name="pesel")
 	private String pesel;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="documentTypeId")
+	private DocumentType documentType;
 
 	@Column(name="documentSeries")
 	private String documentSeries;
@@ -46,6 +53,33 @@ public class Passenger {
 
 	@Column(name="birthDate")
 	private String birthDate;
+
+	@ManyToOne(cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
+	@JoinColumn(name="ticketId")
+	private Ticket ticket;
+
+	@OneToMany(mappedBy = "passenger",
+			cascade = {
+					CascadeType.DETACH,
+					CascadeType.MERGE,
+					CascadeType.PERSIST,
+					CascadeType.REFRESH
+			})
+	private List<Complaint> complaints;
+
+	@OneToMany(mappedBy = "passenger",
+			cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
+	private List<Fine> fines;
 
 	public Passenger() {
 	}
@@ -152,5 +186,21 @@ public class Passenger {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public DocumentType getDocumentType() {
+		return documentType;
+	}
+
+	public void setDocumentType(DocumentType documentType) {
+		this.documentType = documentType;
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 }
