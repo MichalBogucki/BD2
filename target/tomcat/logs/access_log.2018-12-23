@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [23/Dec/2018:15:16:02 +0100] "GET /css/style.css HTTP/1.1" 200 1049 http-bio-8888-exec-2 51
+0:0:0:0:0:0:0:1 - - [23/Dec/2018:15:16:02 +0100] "GET /passengers/list HTTP/1.1" 200 105615 http-bio-8888-exec-1 1844

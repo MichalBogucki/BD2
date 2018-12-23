@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>List Passengers</title>
+
+    <link type="text/css"
+          rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+        <div id="header">
+            <h2>Passengers</h2>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="content">
+
+            <!--<form action="showAddForm" >-->
+                <!--<button type="submit" class="add-button">Add Passenger</button>-->
+            <!--</form>-->
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>City</th>
+                    <th>PESEL</th>
+                    <th>Nationality</th>
+                </tr>
+                <tr th:each="passenger : ${passengers}">
+                    <th:block th:object="${passenger}">
+                        <td th:text="*{name}"></td>
+                        <td th:text="*{surname}"></td>
+                        <td th:text="*{city}"></td>
+                        <td th:text="*{pesel}"></td>
+                        <td th:text="*{nationality}"></td>
+                        <!--<td>-->
+                            <!--<form th:action="'updatePassenger/' + *{id}">-->
+                                <!--<button type="submit" class="add-button">Update Passenger</button>-->
+                            <!--</form>-->
+                            <!--<form th:action="'deletePassenger/' + *{id}">-->
+                                <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
+                                        <!--type="submit"-->
+                                        <!--class="add-button">Delete Passenger</button>-->
+                            <!--</form>-->
+                        <!--</td>-->
+                    </th:block>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

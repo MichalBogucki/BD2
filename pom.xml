@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com</groupId>
-	<artifactId>spring-rest01</artifactId>
+	<artifactId>BD2</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
-	<name>spring-rest01</name>
+	<name>BD2</name>
 
 	<properties>
         <springframework.version>5.0.5.RELEASE</springframework.version>
@@ -128,7 +128,7 @@
 	</dependencies>
 	<!-- TO DO: Add support for Maven WAR Plugin -->
 	<build>
-		<finalName>spring-rest01</finalName>
+		<finalName>BD2</finalName>
 		<pluginManagement>
 			<plugins>
                 <plugin>
