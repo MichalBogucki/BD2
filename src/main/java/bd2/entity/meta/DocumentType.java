@@ -3,6 +3,7 @@ package bd2.entity.meta;
 import bd2.entity.Passenger;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="meta.DocumentType")
@@ -13,14 +14,14 @@ public class DocumentType {
 	@Column(name="documentTypeId")
 	private int id;
 
-	@OneToOne(mappedBy = "documentType",
+	@OneToMany(mappedBy = "ticket",
 			cascade = {
 					CascadeType.DETACH,
 					CascadeType.MERGE,
 					CascadeType.PERSIST,
 					CascadeType.REFRESH
 			})
-	private Passenger passenger;
+	private Set<Passenger> passengers;
 
 	public int getId() {
 		return id;
@@ -30,11 +31,11 @@ public class DocumentType {
 		this.id = id;
 	}
 
-	public Passenger getPassenger() {
-		return passenger;
+	public Set<Passenger> getPassengers() {
+		return passengers;
 	}
 
-	public void setPassenger(Passenger passenger) {
-		this.passenger = passenger;
+	public void setPassengers(Set<Passenger> passengers) {
+		this.passengers = passengers;
 	}
 }

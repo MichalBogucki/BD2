@@ -1,7 +1,7 @@
 package bd2.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="TicketCollector")
@@ -13,11 +13,21 @@ public class TicketCollector {
 	private int id;
 
 	@OneToMany(mappedBy = "ticketCollector",
+			fetch = FetchType.EAGER,
 			cascade = {
 					CascadeType.DETACH,
 					CascadeType.MERGE,
 					CascadeType.PERSIST,
 					CascadeType.REFRESH
 			})
-	private List<Complaint> complaints;
+	private Set<Complaint> complaints;
+
+	@ManyToOne(cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
+	@JoinColumn(name="companyId")
+	private Company company;
 }

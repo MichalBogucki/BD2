@@ -4,6 +4,7 @@ import bd2.entity.meta.FineType;
 import bd2.entity.meta.PaymentStatus;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,15 +34,27 @@ public class Fine {
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 
+	@Column(name="writingDate")
 	private LocalDateTime writingDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
 	@JoinColumn(name="fineTypeId")
 	private FineType fineType;
 
-	private Double fineAmountWithInterests;
+	@Column(name="fineAmountWithInterests")
+	private BigDecimal fineAmountWithInterests;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
 	@JoinColumn(name="paymentStatusId")
 	private PaymentStatus paymentStatus;
 
@@ -85,19 +98,19 @@ public class Fine {
 		this.fineType = fineType;
 	}
 
-	public Double getFineAmountWithInterests() {
-		return fineAmountWithInterests;
-	}
-
-	public void setFineAmountWithInterests(Double fineAmountWithInterests) {
-		this.fineAmountWithInterests = fineAmountWithInterests;
-	}
-
 	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
 
 	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+
+	public BigDecimal getFineAmountWithInterests() {
+		return fineAmountWithInterests;
+	}
+
+	public void setFineAmountWithInterests(BigDecimal fineAmountWithInterests) {
+		this.fineAmountWithInterests = fineAmountWithInterests;
 	}
 }

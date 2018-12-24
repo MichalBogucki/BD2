@@ -3,7 +3,7 @@ bd2\entity\meta\MeanOfTransport.class
 bd2\entity\UserLogin.class
 bd2\dao\api\PassengerDAO.class
 bd2\entity\TicketCollector.class
-bd2\config\DemoAppConfig.class
+bd2\config\AppConfig.class
 bd2\entity\meta\PermissionType.class
 bd2\entity\Ticket.class
 bd2\entity\meta\FineType.class

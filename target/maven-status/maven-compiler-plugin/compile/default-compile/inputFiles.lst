@@ -9,7 +9,6 @@ D:\bd2_project\BD2\src\main\java\bd2\entity\Payroll.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Ticket.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\meta\JobStatus.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\meta\PaymentStatus.java
-D:\bd2_project\BD2\src\main\java\bd2\config\DemoAppConfig.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Passenger.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\meta\Region.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Fine.java
@@ -17,6 +16,7 @@ D:\bd2_project\BD2\src\main\java\bd2\entity\meta\ContractType.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\UserLogin.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\TicketCollector.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Company.java
+D:\bd2_project\BD2\src\main\java\bd2\config\AppConfig.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Complaint.java
 D:\bd2_project\BD2\src\main\java\bd2\service\PassengerService.java
 D:\bd2_project\BD2\src\main\java\bd2\entity\Accounts.java

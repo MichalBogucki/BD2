@@ -11,7 +11,7 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { DemoAppConfig.class, ThymeleafConfig.class};
+		return new Class[] { AppConfig.class, ThymeleafConfig.class};
 	}
 
 	@Override

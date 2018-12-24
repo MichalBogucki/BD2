@@ -3,7 +3,7 @@ package bd2.entity;
 import bd2.entity.meta.DocumentType;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="dbo.Passenger")
@@ -23,7 +23,12 @@ public class Passenger {
 	@Column(name="pesel")
 	private String pesel;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {
+			CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH
+	})
 	@JoinColumn(name="documentTypeId")
 	private DocumentType documentType;
 
@@ -64,22 +69,24 @@ public class Passenger {
 	private Ticket ticket;
 
 	@OneToMany(mappedBy = "passenger",
+			fetch = FetchType.EAGER,
 			cascade = {
 					CascadeType.DETACH,
 					CascadeType.MERGE,
 					CascadeType.PERSIST,
 					CascadeType.REFRESH
 			})
-	private List<Complaint> complaints;
+	private Set<Complaint> complaints;
 
 	@OneToMany(mappedBy = "passenger",
+			fetch = FetchType.EAGER,
 			cascade = {
 			CascadeType.DETACH,
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
 			CascadeType.REFRESH
 	})
-	private List<Fine> fines;
+	private Set<Fine> fines;
 
 	public Passenger() {
 	}
@@ -202,5 +209,21 @@ public class Passenger {
 
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
+	}
+
+	public Set<Complaint> getComplaints() {
+		return complaints;
+	}
+
+	public void setComplaints(Set<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
+	public Set<Fine> getFines() {
+		return fines;
+	}
+
+	public void setFines(Set<Fine> fines) {
+		this.fines = fines;
 	}
 }

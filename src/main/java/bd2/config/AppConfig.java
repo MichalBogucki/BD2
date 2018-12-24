@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 @ComponentScan("bd2")
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mssql.properties" })
-public class DemoAppConfig implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
 
 	private Class[] entitiesList = new Class[]{
 			//meta

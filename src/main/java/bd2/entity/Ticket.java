@@ -1,7 +1,7 @@
 package bd2.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Ticket")
@@ -19,5 +19,5 @@ public class Ticket {
 					CascadeType.PERSIST,
 					CascadeType.REFRESH
 			})
-	private List<Passenger> passengers;
+	private Set<Passenger> passengers;
 }
