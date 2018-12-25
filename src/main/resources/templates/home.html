@@ -12,10 +12,10 @@
             Logged in.
         </div>
 
-        Authenticated username:
-        <div sec:authentication="name"></div>
-        Authenticated user roles:
-        <div sec:authentication="principal.authorities"></div>
+        <!--Authenticated username:-->
+        <!--<div sec:authentication="name"></div>-->
+        <!--Authenticated user roles:-->
+        <!--<div sec:authentication="principal.authorities"></div>-->
         <br/>
         <div sec:authorize="hasRole('ROLE_MANAGER')">
             <form th:action="@{/manager}" method="POST">

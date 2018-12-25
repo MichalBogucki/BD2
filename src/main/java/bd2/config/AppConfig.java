@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -37,7 +36,6 @@ import java.util.logging.Logger;
 @ComponentScan("bd2")
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mssql.properties" })
-@Order(1)
 public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
 	private Class[] entitiesList = new Class[]{
@@ -144,8 +142,8 @@ public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
 
 		http
 				.authorizeRequests()
-					.antMatchers("/home").hasRole("PASSENGER")
-					.antMatchers("/list/**").hasRole("PASSENGER")
+					.antMatchers("/home").permitAll()
+					.antMatchers("/passengers/list").hasRole("PASSENGER")
 					.anyRequest().authenticated()
 				.and()
 					.formLogin()
@@ -164,6 +162,10 @@ public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth
+				.inMemoryAuthentication()
+				.withUser("user").password("password").roles("USER");
+
 		auth.jdbcAuthentication().passwordEncoder(passwordEncoder()).dataSource(myDataSource());
 	}
 
