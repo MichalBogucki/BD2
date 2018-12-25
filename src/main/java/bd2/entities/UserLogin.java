@@ -25,15 +25,19 @@ public class UserLogin {
 	@Column(name="email")
 	private String email;
 
-	@Column(name="pesel")
-	private String pesel;
-
 	@ManyToOne(
 			fetch = FetchType.EAGER,
 			cascade = CascadeType.ALL
 	)
 	@JoinColumn(name="permissionId")
 	private PermissionType permissionType;
+
+	@OneToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
+	@JoinColumn(name = "passengerId")
+	private Passenger passenger;
 
 	public int getId() {
 		return id;
@@ -75,19 +79,19 @@ public class UserLogin {
 		this.email = email;
 	}
 
-	public String getPesel() {
-		return pesel;
-	}
-
-	public void setPesel(String pesel) {
-		this.pesel = pesel;
-	}
-
 	public PermissionType getPermissionType() {
 		return permissionType;
 	}
 
 	public void setPermissionType(PermissionType permissionType) {
 		this.permissionType = permissionType;
+	}
+
+	public Passenger getPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
 }
