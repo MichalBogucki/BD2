@@ -4,10 +4,12 @@ import bd2.dao.api.TicketCollectorDAO;
 import bd2.entities.TicketCollector;
 import bd2.service.api.TicketCollectorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class TicketCollectorServiceImpl implements TicketCollectorService {
 
 	@Autowired
