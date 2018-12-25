@@ -51,7 +51,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 		Session session = sessionFactory.openSession();
 		Query query =
 				session.createQuery("delete from Passenger where passengerId=:id");
-		query.setParameter("customerId", id);
+		query.setParameter("passengerId", id);
 		query.executeUpdate();
 		session.close();
 	}
