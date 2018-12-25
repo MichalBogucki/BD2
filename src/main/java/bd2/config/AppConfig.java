@@ -8,10 +8,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -24,10 +32,13 @@ import java.util.logging.Logger;
 
 @Configuration
 @EnableWebMvc
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan("bd2")
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mssql.properties" })
-public class AppConfig implements WebMvcConfigurer {
+@Order(1)
+public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
 	private Class[] entitiesList = new Class[]{
 			//meta
@@ -126,5 +137,38 @@ public class AppConfig implements WebMvcConfigurer {
 		txManager.setSessionFactory(sessionFactory);
 
 		return txManager;
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		http
+				.authorizeRequests()
+					.antMatchers("/home").hasRole("PASSENGER")
+					.antMatchers("/list/**").hasRole("PASSENGER")
+					.anyRequest().authenticated()
+				.and()
+					.formLogin()
+					.loginPage("/loginPage")
+					.failureUrl("/loginError")
+					.loginProcessingUrl("/authenticateUser")
+					.permitAll()
+				.and()
+					.logout()
+					.logoutSuccessUrl("/logout")
+					.permitAll()
+				.and()
+					.exceptionHandling()
+					.accessDeniedPage("/access-denied");
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().passwordEncoder(passwordEncoder()).dataSource(myDataSource());
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
 	}
 }

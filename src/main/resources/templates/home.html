@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+    <body>
+        <h2>Welcome</h2>
+        <p>Spring Security Thymeleaf tutorial</p>
+        <div sec:authorize="isAuthenticated()">
+            Logged in.
+        </div>
+
+        Authenticated username:
+        <div sec:authentication="name"></div>
+        Authenticated user roles:
+        <div sec:authentication="principal.authorities"></div>
+        <br/>
+        <div sec:authorize="hasRole('ROLE_MANAGER')">
+            <form th:action="@{/manager}" method="POST">
+                <button type="submit" class="add-button">Manager site (only for managers)</button>
+            </form>
+        </div>
+        <br/>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <form th:action="@{/admin}" method="POST">
+                <button type="submit" class="add-button">Admin site (only for admins)</button>
+            </form>
+        </div>
+        <br/>
+        <br/>
+        <form th:action="@{/logout}" method="POST">
+            <button type="submit" class="add-button">Logout</button>
+        </form>
+
+    </body>
+</html>
+
