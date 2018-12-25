@@ -1,5 +1,7 @@
 package bd2.entity;
 
+import bd2.entity.meta.ContractType;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,20 +15,21 @@ public class TicketCollector {
 	private int id;
 
 	@OneToMany(mappedBy = "ticketCollector",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+			cascade = CascadeType.ALL
+	)
 	private Set<Complaint> complaints;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="companyId")
 	private Company company;
+
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
+	@JoinColumn(name="contractTypeId")
+	private ContractType contractType;
 }

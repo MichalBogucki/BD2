@@ -14,12 +14,7 @@ public class Accounts {
 	@Column(name="accountsId")
 	private int id;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="companyId")
 	private Company company;
 

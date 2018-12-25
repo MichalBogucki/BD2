@@ -14,21 +14,11 @@ public class Complaint {
 	@Column(name="complaintId")
 	private int id;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ticketCollectorId")
 	private TicketCollector ticketCollector;
 
@@ -38,12 +28,7 @@ public class Complaint {
 	@Column(name="arrivalDate")
 	private LocalDateTime arrivalDate;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="complaintStatusId")
 	private ComplaintStatus complaintStatus;
 

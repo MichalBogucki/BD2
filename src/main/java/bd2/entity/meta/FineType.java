@@ -14,13 +14,10 @@ public class FineType {
 	@Column(name="fineTypeId")
 	private int id;
 
-	@OneToMany(mappedBy = "fineType",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "fineType",
+			cascade = CascadeType.ALL
+	)
 	private Set<Fine> fines;
 
 	@Column(name="fineType")

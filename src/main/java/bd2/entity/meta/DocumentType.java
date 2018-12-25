@@ -14,13 +14,10 @@ public class DocumentType {
 	@Column(name="documentTypeId")
 	private int id;
 
-	@OneToMany(mappedBy = "ticket",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "ticket",
+			cascade = CascadeType.ALL
+	)
 	private Set<Passenger> passengers;
 
 	public int getId() {

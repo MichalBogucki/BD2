@@ -14,13 +14,10 @@ public class PaymentStatus {
 	@Column(name="paymentStatusId")
 	private int id;
 
-	@OneToMany(mappedBy = "paymentStatus",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "paymentStatus",
+			cascade = CascadeType.ALL
+	)
 	private Set<Fine> fines;
 
 	@Column(name="paymentStatus")

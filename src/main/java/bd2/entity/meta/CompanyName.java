@@ -13,12 +13,10 @@ public class CompanyName {
 	@Column(name="companyNameId")
 	private int id;
 
-	@OneToOne(mappedBy = "companyName", cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH,
-	})
+	@OneToOne(
+			mappedBy = "companyName",
+			cascade = CascadeType.ALL
+	)
 	private Company company;
 
 	@Column(name="nationalBusinessregistryNumber")

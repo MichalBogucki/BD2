@@ -16,45 +16,25 @@ public class Fine {
 	@Column(name="fineId")
 	private int id;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ticketCollectorId")
 	private TicketCollector ticketCollector;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 
 	@Column(name="writingDate")
 	private LocalDateTime writingDate;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fineTypeId")
 	private FineType fineType;
 
 	@Column(name="fineAmountWithInterests")
 	private BigDecimal fineAmountWithInterests;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="paymentStatusId")
 	private PaymentStatus paymentStatus;
 

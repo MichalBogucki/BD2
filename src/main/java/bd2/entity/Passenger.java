@@ -23,12 +23,10 @@ public class Passenger {
 	@Column(name="pesel")
 	private String pesel;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="documentTypeId")
 	private DocumentType documentType;
 
@@ -59,31 +57,23 @@ public class Passenger {
 	@Column(name="birthDate")
 	private String birthDate;
 
-	@ManyToOne(cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="ticketId")
 	private Ticket ticket;
 
-	@OneToMany(mappedBy = "passenger",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "passenger",
+			cascade = CascadeType.ALL
+	)
 	private Set<Complaint> complaints;
 
-	@OneToMany(mappedBy = "passenger",
-			cascade = {
-			CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH
-	})
+	@OneToMany(
+			mappedBy = "passenger",
+			cascade = CascadeType.ALL
+	)
 	private Set<Fine> fines;
 
 	public Passenger() {

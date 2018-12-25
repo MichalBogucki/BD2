@@ -14,22 +14,16 @@ public class Company {
 	@Column(name="companyId")
 	private int id;
 
-	@OneToMany(mappedBy = "company",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "company",
+			cascade = CascadeType.ALL
+	)
 	private Set<Accounts> accounts;
 
-	@OneToMany(mappedBy = "company",
-			cascade = {
-					CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH
-			})
+	@OneToMany(
+			mappedBy = "company",
+			cascade = CascadeType.ALL
+	)
 	private Set<TicketCollector> ticketCollectors;
 
 	@OneToOne(cascade = CascadeType.ALL)
