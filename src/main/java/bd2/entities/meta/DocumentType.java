@@ -1,6 +1,6 @@
-package bd2.entity.meta;
+package bd2.entities.meta;
 
-import bd2.entity.Passenger;
+import bd2.entities.Passenger;
 
 import javax.persistence.*;
 import java.util.Set;

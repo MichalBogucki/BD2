@@ -1,7 +1,7 @@
 package bd2.config;
 
-import bd2.entity.*;
-import bd2.entity.meta.*;
+import bd2.entities.*;
+import bd2.entities.meta.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

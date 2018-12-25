@@ -1,6 +1,6 @@
-package bd2.entity.meta;
+package bd2.entities.meta;
 
-import bd2.entity.Company;
+import bd2.entities.Company;
 
 import javax.persistence.*;
 

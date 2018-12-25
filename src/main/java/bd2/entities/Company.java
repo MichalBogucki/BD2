@@ -1,6 +1,6 @@
-package bd2.entity;
+package bd2.entities;
 
-import bd2.entity.meta.CompanyName;
+import bd2.entities.meta.CompanyName;
 
 import javax.persistence.*;
 import java.util.Set;

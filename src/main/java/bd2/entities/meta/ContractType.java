@@ -1,6 +1,6 @@
-package bd2.entity.meta;
+package bd2.entities.meta;
 
-import bd2.entity.TicketCollector;
+import bd2.entities.TicketCollector;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,7 +14,8 @@ public class ContractType {
 	@Column(name="contractTypeId")
 	private int id;
 
-	@OneToMany(mappedBy = "contractType",
+	@OneToMany(
+			mappedBy = "contractType",
 			cascade = CascadeType.ALL
 	)
 	private Set<TicketCollector> ticketCollectors;
@@ -23,13 +24,13 @@ public class ContractType {
 	private String contractType;
 
 	@Column(name="commission")
-	private int commission;
+	private Integer commission;
 
 	@Column(name="fineQuota")
-	private int fineQuota;
+	private Integer fineQuota;
 
 	@Column(name="baseGrossSalary")
-	private int baseGrossSalary;
+	private Integer baseGrossSalary;
 
 	public int getId() {
 		return id;
@@ -55,27 +56,27 @@ public class ContractType {
 		this.contractType = contractType;
 	}
 
-	public int getCommission() {
+	public Integer getCommission() {
 		return commission;
 	}
 
-	public void setCommission(int commission) {
+	public void setCommission(Integer commission) {
 		this.commission = commission;
 	}
 
-	public int getFineQuota() {
+	public Integer getFineQuota() {
 		return fineQuota;
 	}
 
-	public void setFineQuota(int fineQuota) {
+	public void setFineQuota(Integer fineQuota) {
 		this.fineQuota = fineQuota;
 	}
 
-	public int getBaseGrossSalary() {
+	public Integer getBaseGrossSalary() {
 		return baseGrossSalary;
 	}
 
-	public void setBaseGrossSalary(int baseGrossSalary) {
+	public void setBaseGrossSalary(Integer baseGrossSalary) {
 		this.baseGrossSalary = baseGrossSalary;
 	}
 }

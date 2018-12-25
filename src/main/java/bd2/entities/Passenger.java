@@ -1,8 +1,9 @@
-package bd2.entity;
+package bd2.entities;
 
-import bd2.entity.meta.DocumentType;
+import bd2.entities.meta.DocumentType;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -55,7 +56,7 @@ public class Passenger {
 	private String birthCity;
 
 	@Column(name="birthDate")
-	private String birthDate;
+	private LocalDate birthDate;
 
 	@ManyToOne(
 			fetch = FetchType.EAGER,
@@ -175,11 +176,11 @@ public class Passenger {
 		this.birthCity = birthCity;
 	}
 
-	public String getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

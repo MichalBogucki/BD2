@@ -1,7 +1,7 @@
 package bd2.dao;
 
 import bd2.dao.api.PassengerDAO;
-import bd2.entity.Passenger;
+import bd2.entities.Passenger;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,6 +1,6 @@
-package bd2.entity;
+package bd2.entities;
 
-import bd2.entity.meta.ComplaintStatus;
+import bd2.entities.meta.ComplaintStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

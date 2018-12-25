@@ -1,6 +1,6 @@
 package bd2.dao.api;
 
-import bd2.entity.Passenger;
+import bd2.entities.Passenger;
 
 import java.util.List;
 

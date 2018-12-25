@@ -1,6 +1,6 @@
-package bd2.entity.meta;
+package bd2.entities.meta;
 
-import bd2.entity.Complaint;
+import bd2.entities.Complaint;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,6 +20,9 @@ public class ComplaintStatus {
 	)
 	private Set<Complaint> complaints;
 
+	@Column(name="complaintStatus")
+	private String complaintStatus;
+
 	public int getId() {
 		return id;
 	}
@@ -34,5 +37,13 @@ public class ComplaintStatus {
 
 	public void setComplaints(Set<Complaint> complaints) {
 		this.complaints = complaints;
+	}
+
+	public String getComplaintStatus() {
+		return complaintStatus;
+	}
+
+	public void setComplaintStatus(String complaintStatus) {
+		this.complaintStatus = complaintStatus;
 	}
 }

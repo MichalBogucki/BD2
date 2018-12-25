@@ -1,7 +1,7 @@
-package bd2.entity;
+package bd2.entities;
 
-import bd2.entity.meta.FineType;
-import bd2.entity.meta.PaymentStatus;
+import bd2.entities.meta.FineType;
+import bd2.entities.meta.PaymentStatus;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,25 +16,37 @@ public class Fine {
 	@Column(name="fineId")
 	private int id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="ticketCollectorId")
 	private TicketCollector ticketCollector;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 
 	@Column(name="writingDate")
 	private LocalDateTime writingDate;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="fineTypeId")
 	private FineType fineType;
 
 	@Column(name="fineAmountWithInterests")
 	private BigDecimal fineAmountWithInterests;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="paymentStatusId")
 	private PaymentStatus paymentStatus;
 

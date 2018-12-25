@@ -1,27 +1,27 @@
-package bd2.entity.meta;
+package bd2.entities.meta;
 
-import bd2.entity.Fine;
+import bd2.entities.Fine;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="meta.FineType")
-public class FineType {
+@Table(name="meta.PaymentStatus")
+public class PaymentStatus {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="fineTypeId")
+	@Column(name="paymentStatusId")
 	private int id;
 
 	@OneToMany(
-			mappedBy = "fineType",
+			mappedBy = "paymentStatus",
 			cascade = CascadeType.ALL
 	)
 	private Set<Fine> fines;
 
-	@Column(name="fineType")
-	private String fineType;
+	@Column(name="paymentStatus")
+	private String paymentStatus;
 
 	public int getId() {
 		return id;
@@ -39,11 +39,11 @@ public class FineType {
 		this.fines = fines;
 	}
 
-	public String getFineType() {
-		return fineType;
+	public String getPaymentStatus() {
+		return paymentStatus;
 	}
 
-	public void setFineType(String fineType) {
-		this.fineType = fineType;
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 }
