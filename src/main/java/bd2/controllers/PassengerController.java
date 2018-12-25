@@ -1,7 +1,7 @@
 package bd2.controllers;
 
 import bd2.entities.Passenger;
-import bd2.service.PassengerService;
+import bd2.service.api.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

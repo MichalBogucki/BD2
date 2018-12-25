@@ -2,6 +2,7 @@ package bd2.service;
 
 import bd2.dao.api.PassengerDAO;
 import bd2.entities.Passenger;
+import bd2.service.api.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
