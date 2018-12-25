@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface PassengerDAO {
 
-	public List<Passenger> getPassengers();
+	List<Passenger> getPassengers();
 
-	public void savePassenger(Passenger passenger);
+	void savePassenger(Passenger passenger);
 
-	public Passenger getPassenger(int id);
+	Passenger getPassenger(int id);
 
-	public void deletePassenger(int id);
+	void deletePassenger(int id);
 }

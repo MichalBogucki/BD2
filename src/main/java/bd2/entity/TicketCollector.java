@@ -13,7 +13,6 @@ public class TicketCollector {
 	private int id;
 
 	@OneToMany(mappedBy = "ticketCollector",
-			fetch = FetchType.EAGER,
 			cascade = {
 					CascadeType.DETACH,
 					CascadeType.MERGE,

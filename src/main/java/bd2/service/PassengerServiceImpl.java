@@ -16,25 +16,25 @@ public class PassengerServiceImpl implements PassengerService {
 	
 	@Override
 	@Transactional
-	public List<Passenger> getCustomers() {
+	public List<Passenger> getPassengers() {
 		return passengerDAO.getPassengers();
 	}
 
 	@Override
 	@Transactional
-	public void saveCustomer(Passenger passenger) {
+	public void savePassenger(Passenger passenger) {
 		passengerDAO.savePassenger(passenger);
 	}
 
 	@Override
 	@Transactional
-	public Passenger getCustomer(int id) {
+	public Passenger getPassenger(int id) {
 		return passengerDAO.getPassenger(id);
 	}
 
 	@Override
 	@Transactional
-	public void deleteCustomer(int id) {
+	public void deletePassenger(int id) {
 		passengerDAO.deletePassenger(id);
 	}
 }

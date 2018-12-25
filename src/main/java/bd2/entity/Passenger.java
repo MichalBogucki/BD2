@@ -69,7 +69,6 @@ public class Passenger {
 	private Ticket ticket;
 
 	@OneToMany(mappedBy = "passenger",
-			fetch = FetchType.EAGER,
 			cascade = {
 					CascadeType.DETACH,
 					CascadeType.MERGE,
@@ -79,7 +78,6 @@ public class Passenger {
 	private Set<Complaint> complaints;
 
 	@OneToMany(mappedBy = "passenger",
-			fetch = FetchType.EAGER,
 			cascade = {
 			CascadeType.DETACH,
 			CascadeType.MERGE,
