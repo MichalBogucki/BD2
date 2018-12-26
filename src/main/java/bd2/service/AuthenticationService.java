@@ -1,6 +1,6 @@
 package bd2.service;
 
-import bd2.dao.UserDAOImpl;
+import bd2.dao.UserDAO;
 import bd2.entities.helpers.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class AuthenticationService implements UserDetailsService {
 
 	@Autowired
-	private UserDAOImpl userDAO;
+	private UserDAO userDAO;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

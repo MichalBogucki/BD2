@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 
 @Repository
-public class UserDAOImpl {
+public class UserDAO {
 
 	private JdbcTemplate jdbcTemplate;
 
