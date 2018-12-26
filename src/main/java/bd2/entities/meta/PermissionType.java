@@ -1,6 +1,7 @@
 package bd2.entities.meta;
 
 import bd2.entities.UserLogin;
+import bd2.entities.helpers.Permission;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,8 @@ public class PermissionType {
 	private int id;
 
 	@Column(name="permissionType")
-	private String permissionType;
+	@Enumerated(EnumType.STRING)
+	private Permission permissionType;
 
 	@OneToMany(
 			mappedBy = "permissionType",
@@ -31,11 +33,11 @@ public class PermissionType {
 		this.id = id;
 	}
 
-	public String getPermissionType() {
+	public Permission getPermissionType() {
 		return permissionType;
 	}
 
-	public void setPermissionType(String permissionType) {
+	public void setPermissionType(Permission permissionType) {
 		this.permissionType = permissionType;
 	}
 
