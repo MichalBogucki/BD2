@@ -43,6 +43,7 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.13.Final</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>javax.validation</groupId>
@@ -145,13 +146,22 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.2.11</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
 
-	</dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+
+
+    </dependencies>
 	<!-- TO DO: Add support for Maven WAR Plugin -->
 	<build>
 		<finalName>BD2</finalName>
