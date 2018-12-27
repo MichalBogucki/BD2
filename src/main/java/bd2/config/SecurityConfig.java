@@ -23,23 +23,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-				.authorizeRequests()
-				.antMatchers("/home").permitAll()
-				.antMatchers("/passengers/list").hasAnyRole("PASSENGER", "ADMIN")
-				.anyRequest().authenticated()
+					.authorizeRequests()
+					.antMatchers("/home").permitAll()
+					.antMatchers("/register").permitAll()
+					.antMatchers("/register/**").permitAll()
+					.antMatchers("/passengers/list").hasAnyRole("PASSENGER", "ADMIN")
+					.anyRequest().authenticated()
 				.and()
-				.formLogin()
-				.loginPage("/loginPage")
-				.failureUrl("/loginError")
-				.loginProcessingUrl("/authenticateUser")
-				.permitAll()
+					.formLogin()
+					.loginPage("/loginPage")
+					.failureUrl("/loginError")
+					.loginProcessingUrl("/authenticateUser")
+					.permitAll()
 				.and()
-				.logout()
-				.logoutSuccessUrl("/logout")
-				.permitAll()
+					.logout()
+					.logoutSuccessUrl("/logout")
+					.permitAll()
 				.and()
-				.exceptionHandling()
-				.accessDeniedPage("/access-denied");
+					.exceptionHandling()
+					.accessDeniedPage("/access-denied");
 	}
 
 	@Autowired

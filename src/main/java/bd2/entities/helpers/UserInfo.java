@@ -1,5 +1,8 @@
 package bd2.entities.helpers;
 
+/**
+ * Class needed because Passenger and UserLogin is split into two tables, which breaks standard Spring configuration
+ */
 public class UserInfo {
 
 	private String username;

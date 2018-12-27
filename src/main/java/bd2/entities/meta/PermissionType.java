@@ -15,9 +15,9 @@ public class PermissionType {
 	@Column(name="permissionTypeId")
 	private int id;
 
-	@Column(name="permissionType")
+	@Column(name="permission")
 	@Enumerated(EnumType.STRING)
-	private Permission permissionType;
+	private Permission permission;
 
 	@OneToMany(
 			mappedBy = "permissionType",
@@ -33,12 +33,12 @@ public class PermissionType {
 		this.id = id;
 	}
 
-	public Permission getPermissionType() {
-		return permissionType;
+	public Permission getPermission() {
+		return permission;
 	}
 
-	public void setPermissionType(Permission permissionType) {
-		this.permissionType = permissionType;
+	public void setPermission(Permission permission) {
+		this.permission = permission;
 	}
 
 	public Set<UserLogin> getUserLogins() {
