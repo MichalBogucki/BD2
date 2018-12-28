@@ -1,80 +1,58 @@
 package bd2.entities.helpers;
 
 
-import bd2.validation.FieldMatch;
-import bd2.validation.ValidEmail;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Class needed because Passenger and UserLogin is split into two tables, which breaks standard Spring configuration
  */
-@FieldMatch.List({
-		@FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
-})
+
+@JsonIgnoreProperties("fieldsList")
 public class RegistrationUser {
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
+	public static final List<String> stringFieldsList = Arrays.asList(
+			"name",
+			"surname",
+			"city",
+			"street",
+			"nationality",
+			"birthCountry",
+			"birthCity"
+	);
+
 	private String login;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String password;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String matchingPassword;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String name;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String surname;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String pesel;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String city;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String street;
 
-	private Integer buildingNumber;
+	private String buildingNumber;
 
-	private Integer flatNumber;
+	private String flatNumber;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String nationality;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String birthCountry;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String birthCity;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
-	private LocalDate birthDate;
+	private String birthDate;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
 	private String phoneNumber;
 
-	@NotNull(message = "is required")
-	@Size(min = 1, message = "is required")
-	@ValidEmail
 	private String email;
 
 	public String getLogin() {
@@ -141,19 +119,19 @@ public class RegistrationUser {
 		this.street = street;
 	}
 
-	public Integer getBuildingNumber() {
+	public String getBuildingNumber() {
 		return buildingNumber;
 	}
 
-	public void setBuildingNumber(Integer buildingNumber) {
+	public void setBuildingNumber(String buildingNumber) {
 		this.buildingNumber = buildingNumber;
 	}
 
-	public Integer getFlatNumber() {
+	public String getFlatNumber() {
 		return flatNumber;
 	}
 
-	public void setFlatNumber(Integer flatNumber) {
+	public void setFlatNumber(String flatNumber) {
 		this.flatNumber = flatNumber;
 	}
 
@@ -181,11 +159,11 @@ public class RegistrationUser {
 		this.birthCity = birthCity;
 	}
 
-	public LocalDate getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

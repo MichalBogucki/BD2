@@ -1,10 +1,12 @@
 package bd2.config;
 
 import bd2.entities.*;
+import bd2.entities.helpers.RegistrationUser;
 import bd2.entities.meta.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -51,7 +53,9 @@ public class AppConfig implements WebMvcConfigurer {
 			Payroll.class,
 			Ticket.class,
 			TicketCollector.class,
-			UserLogin.class
+			UserLogin.class,
+			//validators
+			RegistrationUser.class
 	};
 
 	@Autowired
@@ -126,5 +130,13 @@ public class AppConfig implements WebMvcConfigurer {
 		txManager.setSessionFactory(sessionFactory);
 
 		return txManager;
+	}
+
+	@Bean(name = "messageSource")
+	public ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource() {
+		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+		messageSource.setBasenames("classpath:messages");
+		messageSource.setDefaultEncoding("UTF-8");
+		return messageSource;
 	}
 }

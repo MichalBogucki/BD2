@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="frag(value, glyphicon, placeholder, fieldName)">
+    <div class="form-group input-group has-feedback">
+                            <span class="input-group-addon">
+                                <span class="glyphicon" th:classappend="glyphicon-__${glyphicon}__">
+
+                                </span>
+                            </span>
+
+        <input type="text" th:name="${fieldName}" th:value="${value}"
+               th:placeholder="'__${placeholder}__'" class="form-control" />
+        <span class="glyphicon form-control-feedback"
+              aria-hidden="true"></span>
+    </div>
+    <div th:if="${#fields.hasErrors('__${fieldName}__')}">
+
+        <p th:each="error : ${#fields.errors('__${fieldName}__')}" class="alert alert-danger"
+           th:text="${error}">
+        </p>
+
+    </div>
+</th:block>
+
+</html>
