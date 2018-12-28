@@ -1,6 +1,8 @@
 package bd2.entities;
 
+import bd2.entities.helpers.RegistrationUser;
 import bd2.entities.meta.PermissionType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -38,6 +40,22 @@ public class UserLogin {
 	)
 	@JoinColumn(name = "passengerId")
 	private Passenger passenger;
+
+	public UserLogin(RegistrationUser registrationUser,
+					 Passenger passenger,
+					 PermissionType permissionType,
+					 BCryptPasswordEncoder encoder) {
+		this.password = encoder.encode(registrationUser.getPassword());
+		this.login = registrationUser.getLogin();
+		this.phoneNumber = registrationUser.getPhoneNumber();
+		this.email = registrationUser.getEmail();
+		this.permissionType = permissionType;
+		this.passenger = passenger;
+	}
+
+	public UserLogin() {
+
+	}
 
 	public int getId() {
 		return id;

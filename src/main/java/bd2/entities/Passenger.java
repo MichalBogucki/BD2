@@ -1,5 +1,6 @@
 package bd2.entities;
 
+import bd2.entities.helpers.RegistrationUser;
 import bd2.entities.meta.DocumentType;
 
 import javax.persistence.*;
@@ -77,7 +78,30 @@ public class Passenger {
 	)
 	private Set<Fine> fines;
 
+	@OneToOne(
+			mappedBy = "passenger",
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
+	private UserLogin userLogin;
+
 	public Passenger() {
+	}
+
+	public Passenger(RegistrationUser registrationUser, DocumentType documentType) {
+		this.name = registrationUser.getName();
+		this.surname = registrationUser.getSurname();
+		this.birthCity = registrationUser.getBirthCity();
+		this.city = registrationUser.getCity();
+		this.nationality = registrationUser.getNationality();
+		this.birthDate = LocalDate.parse(registrationUser.getBirthDate());
+		this.birthCountry = registrationUser.getBirthCountry();
+		this.buildingNumber = Integer.parseInt(registrationUser.getBuildingNumber());
+		this.flatNumber = Integer.parseInt(registrationUser.getFlatNumber());
+		this.pesel = registrationUser.getPesel();
+		this.street = registrationUser.getStreet();
+		this.documentSeries = "-";
+		this.documentType = documentType;
 	}
 
 	public int getId() {
@@ -214,5 +238,13 @@ public class Passenger {
 
 	public void setFines(Set<Fine> fines) {
 		this.fines = fines;
+	}
+
+	public UserLogin getUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(UserLogin userLogin) {
+		this.userLogin = userLogin;
 	}
 }

@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -33,7 +34,12 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 		Query<UserLogin> query = session
 				.createQuery("FROM UserLogin WHERE login=:login", UserLogin.class)
 				.setParameter("login", login);
-		UserLogin userLogin = query.getSingleResult();
+		UserLogin userLogin;
+		try{
+			userLogin = query.getSingleResult();
+		} catch (NoResultException e) {
+			userLogin = null;
+		}
 		session.close();
 		return userLogin;
 	}
@@ -44,7 +50,12 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 		Query<UserLogin> query = session
 				.createQuery("FROM UserLogin WHERE email=:email", UserLogin.class)
 				.setParameter("email", email);
-		UserLogin userLogin = query.getSingleResult();
+		UserLogin userLogin;
+		try {
+			userLogin = query.getSingleResult();
+		} catch (NoResultException e) {
+			userLogin = null;
+		}
 		session.close();
 		return userLogin;
 	}

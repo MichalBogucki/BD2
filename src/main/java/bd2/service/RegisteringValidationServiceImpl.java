@@ -167,10 +167,6 @@ public class RegisteringValidationServiceImpl implements RegisteringValidationSe
 
 	private void validatePesel(BindingResult result) {
 		String pesel = (String) result.getRawFieldValue("pesel");
-		if(pesel.isEmpty()) {
-			result.rejectValue("pesel", ErrorCodes.FIELD_REQUIRED_ERRORCODE);
-			return;
-		}
 		if(!isPeselValid(pesel)) {
 			result.rejectValue("pesel", ErrorCodes.WRONG_FORMAT_ERRORCODE);
 		}
