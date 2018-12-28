@@ -37,31 +37,6 @@
                     <form th:action="@{/register/processRegistration}"
                                method="POST" class="form-horizontal" th:object="${registrationUser}">
 
-                        <div class="form-group">
-                            <div class="col-xs-15">
-                                <div>
-
-                                    <!-- Check for login error -->
-
-                                    <th:block th:if="${usernameExistsError}">
-
-                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10">
-                                            User with this login already exists.
-                                        </div>
-
-                                    </th:block>
-
-                                    <th:block th:if="${emailExistsError}">
-                                        <div class="alert alert-success col-xs-offset-1 col-xs-10">
-                                            User with this e-mail already exists.
-                                        </div>
-                                    </th:block>
-
-
-                                </div>
-                            </div>
-                        </div>
-
                         <th:block th:include="fragments/input_string.html :: frag(*{login}, 'user', 'Login', 'login')"/>
 
                         <th:block th:include="fragments/input_string.html :: frag(*{name}, 'user', 'Name', 'name')"/>
@@ -70,7 +45,7 @@
 
                         <th:block th:include="fragments/input_datepicker.html :: frag(*{birthDate}, 'calendar', '', 'birthDate')"/>
 
-                        <th:block th:include="fragments/input_string.html :: frag(*{pesel}, 'user', 'PESEL', 'pesel')"/>
+                        <th:block th:include="fragments/input_string.html :: frag(*{pesel}, 'user', 'PESEL(11 digits)', 'pesel')"/>
 
                         <th:block th:include="fragments/input_string.html :: frag(*{email}, 'envelope', 'Email Address', 'email')"/>
 
@@ -78,9 +53,9 @@
 
                         <th:block th:include="fragments/input_string.html :: frag(*{street}, 'road', 'Street', 'street')"/>
 
-                        <th:block th:include="fragments/input_string.html :: frag(*{buildingNumber}, 'home', 'Building Number', 'buildingNumber')"/>
+                        <th:block th:include="fragments/input_string.html :: frag(*{buildingNumber}, 'home', 'Building Number(max.5 digits)', 'buildingNumber')"/>
 
-                        <th:block th:include="fragments/input_string.html :: frag(*{flatNumber}, 'home', 'Flat Number', 'flatNumber')"/>
+                        <th:block th:include="fragments/input_string.html :: frag(*{flatNumber}, 'home', 'Flat Number(max.5 digits)', 'flatNumber')"/>
 
                         <th:block th:include="fragments/input_string.html :: frag(*{nationality}, 'home', 'Nationality', 'nationality')"/>
 
@@ -88,7 +63,7 @@
 
                         <th:block th:include="fragments/input_string.html :: frag(*{birthCity}, 'home', 'Birth City', 'birthCity')"/>
 
-                        <th:block th:include="fragments/input_string.html :: frag(*{phoneNumber}, 'phone', 'Phone Number', 'phoneNumber')"/>
+                        <th:block th:include="fragments/input_string.html :: frag(*{phoneNumber}, 'phone', 'Phone Number(9 digits)', 'phoneNumber')"/>
 
                         <th:block th:include="fragments/input_password.html :: frag(*{password}, 'lock', 'Password', 'password')"/>
 

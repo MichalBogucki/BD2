@@ -12,10 +12,10 @@ public class PermissionType {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="permissionTypeId")
+	@Column(name="permissionId")
 	private int id;
 
-	@Column(name="permission")
+	@Column(name="permissionType")
 	@Enumerated(EnumType.STRING)
 	private Permission permission;
 

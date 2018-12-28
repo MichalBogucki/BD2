@@ -1,7 +1,8 @@
 package bd2.controllers;
 
-import bd2.business.validation.RegistrationValidationUtil;
 import bd2.entities.helpers.RegistrationUser;
+import bd2.service.api.RegisteringValidationSerivce;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/register")
 public class RegistrationController {
 
-//	@InitBinder
-//	public void initBinder(WebDataBinder dataBinder) {
-//		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-//		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-//	}
+	@Autowired
+	private RegisteringValidationSerivce validationSerivce;
 
 	@RequestMapping("")
 	public String register(Model model, Authentication authentication) {
@@ -32,10 +30,12 @@ public class RegistrationController {
 			@ModelAttribute("registrationUser") RegistrationUser registrationUser,
 			BindingResult result,
 			Model model) {
-		RegistrationValidationUtil.validateRegistrationUser(result);
+
+		validationSerivce.validateRegistrationUser(result);
 		if(result.hasErrors()) {
 			return "register";
+		} else {
+			return "register-confirmation";
 		}
-		return "register-confirmation";
 	}
 }
