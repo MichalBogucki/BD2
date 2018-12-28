@@ -4,11 +4,11 @@
 
 <th:block th:fragment="frag(value, glyphicon, placeholder, fieldName)">
     <div class="form-group input-group has-feedback">
-                            <span class="input-group-addon">
-                                <span class="glyphicon" th:classappend="glyphicon-__${glyphicon}__">
+        <span class="input-group-addon">
+            <span class="glyphicon" th:classappend="glyphicon-__${glyphicon}__">
 
-                                </span>
-                            </span>
+            </span>
+        </span>
 
         <input type="text" th:name="${fieldName}" th:value="${value}"
                th:placeholder="'__${placeholder}__'" class="form-control" />

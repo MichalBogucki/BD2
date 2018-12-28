@@ -68,6 +68,8 @@
 
                         <th:block th:include="fragments/input_string.html :: frag(*{surname}, 'user', 'Surname', 'surname')"/>
 
+                        <th:block th:include="fragments/input_datepicker.html :: frag(*{birthDate}, 'calendar', '', 'birthDate')"/>
+
                         <th:block th:include="fragments/input_string.html :: frag(*{pesel}, 'user', 'PESEL', 'pesel')"/>
 
                         <th:block th:include="fragments/input_string.html :: frag(*{email}, 'envelope', 'Email Address', 'email')"/>
