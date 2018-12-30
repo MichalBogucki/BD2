@@ -31,6 +31,9 @@ public class RegistrationController {
 
 	@RequestMapping("")
 	public String register(Model model, Authentication authentication) {
+		if(authentication != null && authentication.isAuthenticated()) {
+			return "home";
+		}
 		RegistrationUser registrationUser = new RegistrationUser();
 		model.addAttribute("registrationUser", registrationUser);
 		return "register";
@@ -38,17 +41,35 @@ public class RegistrationController {
 
 	@PostMapping("/processRegistration")
 	public String processRegistration(
+			Authentication authentication,
 			@ModelAttribute("registrationUser") RegistrationUser registrationUser,
 			BindingResult result,
 			Model model) {
 
+		if(authentication != null && authentication.isAuthenticated()) {
+			return "home";
+		}
+
 		validationSerivce.validateRegistrationUser(result);
 		if(result.hasErrors()) {
+			registrationUser.setPassword(null);
+			registrationUser.setMatchingPassword(null);
 			return "register";
 		} else {
 			PermissionType permissionType = permissionTypeService.getPermissionType(Permission.ROLE_PASSENGER);
 			passengerService.savePassengerAndUserLogin(registrationUser, permissionType, encoder);
+			model.addAttribute("registerSuccess", true);
+			return "login";
+		}
+	}
+
+	@RequestMapping("/processRegistration")
+	public String processRegistrationDenied(Model model, Authentication authentication) {
+		if(authentication != null && authentication.isAuthenticated()) {
 			return "home";
 		}
+		RegistrationUser registrationUser = new RegistrationUser();
+		model.addAttribute("registrationUser", registrationUser);
+		return "register";
 	}
 }

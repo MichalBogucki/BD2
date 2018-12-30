@@ -7,17 +7,14 @@
 </head>
     <body>
         <h2>Welcome</h2>
-        <p>Spring Security Thymeleaf tutorial</p>
+        <p>Passenger Panel</p>
         <div sec:authorize="isAuthenticated()">
             Logged in.
         </div>
-
-        <!--Authenticated username:-->
-        <!--<div sec:authentication="name"></div>-->
-        <!--Authenticated user roles:-->
-        <!--<div sec:authentication="principal.authorities"></div>-->
+        Authenticated username:
+        <div sec:authentication="name"></div>
         <br/>
-        <div sec:authorize="hasRole('ROLE_MANAGER')">
+        <div sec:authorize="hasRole('ROLE_PASSENGER')">
             <form th:action="@{/manager}" method="POST">
                 <button type="submit" class="add-button">Manager site (only for managers)</button>
             </form>
