@@ -3,7 +3,19 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Welcome to Spring Security Thymeleaf tutorial</title>
+    <title>Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Reference Bootstrap files -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
 </head>
     <body>
         <h2>Welcome</h2>
@@ -15,9 +27,8 @@
         <div sec:authentication="name"></div>
         <br/>
         <div sec:authorize="hasRole('ROLE_PASSENGER')">
-            <form th:action="@{/manager}" method="POST">
-                <button type="submit" class="add-button">Manager site (only for managers)</button>
-            </form>
+            Passenger options:
+            <th:block th:include="fragments/passenger_options.html :: frag()"/>
         </div>
         <br/>
         <div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -25,11 +36,9 @@
                 <button type="submit" class="add-button">Admin site (only for admins)</button>
             </form>
         </div>
-        <br/>
-        <br/>
-        <form th:action="@{/logout}" method="POST">
-            <button type="submit" class="add-button">Logout</button>
-        </form>
+        <br>
+
+        <a th:href="@{/logout}" class="btn btn-success">Logout</a>
 
     </body>
 </html>

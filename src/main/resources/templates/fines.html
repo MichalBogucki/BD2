@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>My fines</title>
+
+    <link type="text/css"
+          rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Reference Bootstrap files -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+</head>
+
+<body>
+
+    <th:block th:if="${fines.size()} == 0">
+        <p>No fines.</p>
+    </th:block>
+
+    <table th:if="${fines.size()} > 0">
+        <tr>
+            <th>Writing Date</th>
+            <th>Fine Amount</th>
+            <th>Ticket Collector</th>
+            <th>Fine Type</th>
+            <th>Payment Status</th>
+        </tr>
+        <tr th:each="fine : ${fines}">
+            <th:block th:object="${fine}">
+                <td th:text="*{writingDate.toLocalDate()}"></td>
+                <td th:text="*{fineAmountWithInterests}"></td>
+                <td th:text="*{ticketCollector.name} + ' ' + *{ticketCollector.surname}"></td>
+                <td th:text="*{fineType.fineType}"></td>
+                <td th:text="*{paymentStatus.paymentStatus}"></td>
+                <!--<td>-->
+                <!--<form th:action="'updatePassenger/' + *{id}">-->
+                <!--<button type="submit" class="add-button">Update Passenger</button>-->
+                <!--</form>-->
+                <!--<form th:action="'deletePassenger/' + *{id}">-->
+                <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
+                <!--type="submit"-->
+                <!--class="add-button">Delete Passenger</button>-->
+                <!--</form>-->
+                <!--</td>-->
+            </th:block>
+        </tr>
+    </table>
+
+    <br/>
+    <a th:href="@{/home}" class="btn btn-success">Go back</a>
+
+</body>
+
+</html>

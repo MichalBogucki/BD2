@@ -20,5 +20,4 @@ public interface PassengerService {
 	void savePassengerAndUserLogin(RegistrationUser registrationUser,
 								   PermissionType permissionType,
 								   BCryptPasswordEncoder encoder);
-	
 }

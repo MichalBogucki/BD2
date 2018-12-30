@@ -1,0 +1,14 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="frag()">
+    <br>
+    <br>
+    <a th:href="@{__${#httpServletRequest.requestURL}__/fines}" class="btn btn-success">Show my fines</a>
+    <br>
+    <br>
+    <a th:href="@{__${#httpServletRequest.requestURL}__/complaints}" class="btn btn-success">Show my complaints</a>
+</th:block>
+
+</html>

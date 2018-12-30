@@ -4,6 +4,7 @@ import bd2.entities.meta.ContractType;
 import bd2.entities.meta.JobStatus;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -67,6 +68,27 @@ public class TicketCollector {
 	)
 	@JoinColumn(name="colleagueTicketCollectorId")
 	private TicketCollector colleagueTicketCollector;
+
+	@Column(name="name")
+	private String name;
+
+	@Column(name="surname")
+	private String surname;
+
+	@Column(name="medicalExamValidity")
+	private LocalDate medicalExamValidity;
+
+	@Column(name="trainingValidity")
+	private LocalDate trainingValidity;
+
+	@Column(name="birthDate")
+	private LocalDate birthDate;
+
+	@Column(name="licenseNumber")
+	private int licenseNumber;
+
+	@Column(name="bankAccountNumber")
+	private String bankAccountNumber;
 
 	public int getId() {
 		return id;
@@ -138,5 +160,61 @@ public class TicketCollector {
 
 	public void setColleagueTicketCollector(TicketCollector colleagueTicketCollector) {
 		this.colleagueTicketCollector = colleagueTicketCollector;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public LocalDate getMedicalExamValidity() {
+		return medicalExamValidity;
+	}
+
+	public void setMedicalExamValidity(LocalDate medicalExamValidity) {
+		this.medicalExamValidity = medicalExamValidity;
+	}
+
+	public LocalDate getTrainingValidity() {
+		return trainingValidity;
+	}
+
+	public void setTrainingValidity(LocalDate trainingValidity) {
+		this.trainingValidity = trainingValidity;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public int getLicenseNumber() {
+		return licenseNumber;
+	}
+
+	public void setLicenseNumber(int licenseNumber) {
+		this.licenseNumber = licenseNumber;
+	}
+
+	public String getBankAccountNumber() {
+		return bankAccountNumber;
+	}
+
+	public void setBankAccountNumber(String bankAccountNumber) {
+		this.bankAccountNumber = bankAccountNumber;
 	}
 }

@@ -35,7 +35,7 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 				.createQuery("FROM UserLogin WHERE login=:login", UserLogin.class)
 				.setParameter("login", login);
 		UserLogin userLogin;
-		try{
+		try {
 			userLogin = query.getSingleResult();
 		} catch (NoResultException e) {
 			userLogin = null;
