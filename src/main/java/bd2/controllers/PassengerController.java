@@ -84,6 +84,7 @@ public class PassengerController {
 		}
 
 		if(result.hasErrors()) {
+			model.addAttribute("ticketCollectors", idsNamesOfCollectorsMap);
 			return "new-complaint";
 		}
 

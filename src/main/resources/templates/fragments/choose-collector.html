@@ -5,18 +5,16 @@
 <th:block th:fragment="frag(fieldName, fieldValue)">
 
     <!--remember to add attribute "ticketCollectorId" and "ticketCollectors"-->
-    <select th:name="${fieldName}" th:value="${fieldValue}">
+    <select th:name="${fieldName}"
+            th:value="${fieldValue}">
         <option th:value="0"
                 th:text="'Choose Ticket Collector'">
         </option>
+        <option th:each="collector : ${ticketCollectors.entrySet()}"
+                th:value="${collector.key}"
+                th:text="${collector.value}">
 
-        <th:block th:each="collector : ${ticketCollectors.entrySet()}">
-            <option th:value="${collector.key}"
-                    th:text="${collector.value}">
-            </option>
-            <input type="hidden" th:name="${collector.key}" th:value="${collector.key}"/>
-            <input type="hidden" th:name="${collector.value}" th:value="${collector.value}"/>
-        </th:block>
+        </option>
 
     </select>
 
