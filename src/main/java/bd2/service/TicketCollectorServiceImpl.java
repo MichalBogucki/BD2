@@ -34,6 +34,11 @@ public class TicketCollectorServiceImpl implements TicketCollectorService {
 	}
 
 	@Override
+	public TicketCollector getTicketCollectorLazy(int id) {
+		return ticketCollectorDAO.getTicketCollectorLazy(id);
+	}
+
+	@Override
 	@Transactional
 	public void deleteTicketCollector(int id) {
 		ticketCollectorDAO.deleteTicketCollector(id);

@@ -12,7 +12,7 @@ public class FineType {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="fineTypeId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "fineType",
@@ -26,11 +26,11 @@ public class FineType {
 	@Column(name="fineAmount")
 	private Integer fineAmount;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

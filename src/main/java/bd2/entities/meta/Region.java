@@ -12,7 +12,7 @@ public class Region {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="regionId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "region",
@@ -23,11 +23,11 @@ public class Region {
 	@Column(name="regionName")
 	private String regionName;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

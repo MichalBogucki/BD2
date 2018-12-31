@@ -12,7 +12,7 @@ public class MeanOfTransport {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="meanOfTransportId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "meanOfTransport",
@@ -23,11 +23,11 @@ public class MeanOfTransport {
 	@Column(name="transportName")
 	private String transportName;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

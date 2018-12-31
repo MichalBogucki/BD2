@@ -7,7 +7,7 @@
     <!--remember to add attribute "ticketCollectorId" and "ticketCollectors"-->
     <select th:name="${fieldName}"
             th:value="${fieldValue}">
-        <option th:value="0"
+        <option th:value="null"
                 th:text="'Choose Ticket Collector'">
         </option>
         <option th:each="collector : ${ticketCollectors.entrySet()}"

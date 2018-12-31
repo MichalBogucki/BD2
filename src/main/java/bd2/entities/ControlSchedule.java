@@ -14,7 +14,7 @@ public class ControlSchedule {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="controlScheduleId")
-	private int id;
+	private Integer id;
 
 	@Column(name="month")
 	private Month month;
@@ -39,11 +39,11 @@ public class ControlSchedule {
 	)
 	private Set<TicketCollector> ticketCollectors;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

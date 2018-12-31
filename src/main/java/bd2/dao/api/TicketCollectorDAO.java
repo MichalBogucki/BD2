@@ -12,5 +12,7 @@ public interface TicketCollectorDAO {
 
 	TicketCollector getTicketCollector(int id);
 
+	TicketCollector getTicketCollectorLazy(int id);
+
 	void deleteTicketCollector(int id);
 }

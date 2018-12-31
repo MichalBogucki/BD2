@@ -14,7 +14,7 @@ public class Complaint {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="complaintId")
-	private int id;
+	private Integer id;
 
 	@ManyToOne(
 			fetch = FetchType.EAGER,
@@ -43,11 +43,11 @@ public class Complaint {
 	@JoinColumn(name="complaintStatusId")
 	private ComplaintStatus complaintStatus;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

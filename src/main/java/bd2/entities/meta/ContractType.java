@@ -12,7 +12,7 @@ public class ContractType {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="contractTypeId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "contractType",
@@ -32,11 +32,11 @@ public class ContractType {
 	@Column(name="baseGrossSalary")
 	private Integer baseGrossSalary;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

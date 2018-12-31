@@ -12,7 +12,7 @@ public class Accounts {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="accountsId")
-	private int id;
+	private Integer id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="companyId")
@@ -30,11 +30,11 @@ public class Accounts {
 	@Column(name="year")
 	private Year year;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

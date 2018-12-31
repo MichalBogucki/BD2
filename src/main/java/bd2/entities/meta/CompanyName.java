@@ -11,7 +11,7 @@ public class CompanyName {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="companyNameId")
-	private int id;
+	private Integer id;
 
 	@OneToOne(
 			mappedBy = "companyName",
@@ -25,11 +25,11 @@ public class CompanyName {
 	@Column(name="taxNumber")
 	private String taxNumber;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

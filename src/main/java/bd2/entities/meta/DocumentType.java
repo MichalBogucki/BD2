@@ -12,7 +12,7 @@ public class DocumentType {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="documentTypeId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "ticket",
@@ -20,11 +20,11 @@ public class DocumentType {
 	)
 	private Set<Passenger> passengers;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

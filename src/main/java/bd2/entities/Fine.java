@@ -14,7 +14,7 @@ public class Fine {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="fineId")
-	private int id;
+	private Integer id;
 
 	@ManyToOne(
 			fetch = FetchType.EAGER,
@@ -50,11 +50,11 @@ public class Fine {
 	@JoinColumn(name="paymentStatusId")
 	private PaymentStatus paymentStatus;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

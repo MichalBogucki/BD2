@@ -12,7 +12,7 @@ public class Payroll {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="payrollId")
-	private int id;
+	private Integer id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ticketCollectorId")
@@ -30,11 +30,14 @@ public class Payroll {
 	@Column(name="month")
 	private Month month;
 
-	public int getId() {
+	public Payroll() {
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

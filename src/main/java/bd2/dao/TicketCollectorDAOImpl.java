@@ -46,6 +46,14 @@ public class TicketCollectorDAOImpl implements TicketCollectorDAO {
 	}
 
 	@Override
+	public TicketCollector getTicketCollectorLazy(int id) {
+		Session session = sessionFactory.openSession();
+		TicketCollector ticketCollector = session.get(TicketCollector.class, id);
+		session.close();
+		return ticketCollector;
+	}
+
+	@Override
 	public void deleteTicketCollector(int id) {
 		Session session = sessionFactory.openSession();
 		Query query =

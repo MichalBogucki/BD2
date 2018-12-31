@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -40,9 +41,7 @@ public class PassengerController {
 
 	@RequestMapping(value = "/fines", method = RequestMethod.GET)
 	public String passengerFines(Model model, Authentication authentication) {
-		String login = authentication.getName();
-		int passengerId = userLoginService.getUserLoginByLogin(login).getPassenger().getId();
-		Passenger passenger = passengerService.getPassenger(passengerId);
+		Passenger passenger = getPassengerByUserLogin(authentication);
 		if(passenger == null) {
 			return "home";
 		} else {
@@ -59,7 +58,6 @@ public class PassengerController {
 
 		Complaint newComplaint = new Complaint();
 		TicketCollector ticketCollector = new TicketCollector();
-		ticketCollector.setId(0);
 		newComplaint.setTicketCollector(ticketCollector);
 
 		model.addAttribute("newComplaint", newComplaint);
@@ -88,9 +86,9 @@ public class PassengerController {
 			return "new-complaint";
 		}
 
-		String login = authentication.getName();
-		int passengerId = userLoginService.getUserLoginByLogin(login).getPassenger().getId();
-		Passenger passenger = passengerService.getPassenger(passengerId);
+		Passenger passenger = getPassengerByUserLogin(authentication);
+		saveNewComplaint(newComplaint, passenger);
+
 		if(passenger == null) {
 			return "redirect:/home";
 		} else {
@@ -98,11 +96,24 @@ public class PassengerController {
 		}
 	}
 
-	@RequestMapping(value = "/complaints", method = RequestMethod.GET)
-	public String passengerComplaints(Model model, Authentication authentication) {
+	private Passenger getPassengerByUserLogin(Authentication authentication) {
 		String login = authentication.getName();
 		int passengerId = userLoginService.getUserLoginByLogin(login).getPassenger().getId();
-		Passenger passenger = passengerService.getPassenger(passengerId);
+		return passengerService.getPassenger(passengerId);
+	}
+
+	private void saveNewComplaint(@ModelAttribute("newComplaint") Complaint newComplaint, Passenger passenger) {
+		TicketCollector ticketCollector = ticketCollectorService.getTicketCollectorLazy(newComplaint.getTicketCollector().getId());
+		newComplaint.setTicketCollector(ticketCollector);
+		newComplaint.setPassenger(passenger);
+		newComplaint.setComplaintStatus(complaintStatusService.getComplaintStatus(1));
+		newComplaint.setArrivalDate(LocalDateTime.now());
+		complaintService.saveComplaint(newComplaint);
+	}
+
+	@RequestMapping(value = "/complaints", method = RequestMethod.GET)
+	public String passengerComplaints(Model model, Authentication authentication) {
+		Passenger passenger = getPassengerByUserLogin(authentication);
 		if(passenger == null) {
 			return "home";
 		} else {

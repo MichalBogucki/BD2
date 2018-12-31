@@ -14,7 +14,7 @@ public class TicketCollector {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="ticketCollectorId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "ticketCollector",
@@ -90,11 +90,11 @@ public class TicketCollector {
 	@Column(name="bankAccountNumber")
 	private String bankAccountNumber;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

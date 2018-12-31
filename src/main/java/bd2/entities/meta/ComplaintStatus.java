@@ -12,7 +12,7 @@ public class ComplaintStatus {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="complaintStatusId")
-	private int id;
+	private Integer id;
 
 	@OneToMany(
 			mappedBy = "complaintStatus",
@@ -23,11 +23,11 @@ public class ComplaintStatus {
 	@Column(name="complaintStatus")
 	private String complaintStatus;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
