@@ -1,0 +1,15 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="frag(fieldName)">
+    <div th:if="${#fields.hasErrors('__${fieldName}__')}">
+
+        <p th:each="error : ${#fields.errors('__${fieldName}__')}" class="alert alert-danger"
+           th:text="${error}">
+        </p>
+
+    </div>
+</th:block>
+
+</html>

@@ -19,4 +19,8 @@ public class ErrorCodes {
 	public static final String LOGIN_EXISTS_ERRORCODE = "LOGIN_EXISTS_ERRORCODE";
 
 	public static final String EMAIL_EXISTS_ERRORCODE = "EMAIL_EXISTS_ERRORCODE";
+
+	public static final String JUSTIFICATION_TOO_LONG_ERRORCODE = "JUSTIFICATION_TOO_LONG_ERRORCODE";
+
+	public static final String COLLECTOR_NOT_CHOSEN = "COLLECTOR_NOT_CHOSEN";
 }

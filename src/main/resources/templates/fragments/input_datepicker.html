@@ -15,13 +15,7 @@
         <span class="glyphicon form-control-feedback"
               aria-hidden="true"></span>
     </div>
-    <div th:if="${#fields.hasErrors('__${fieldName}__')}">
-
-        <p th:each="error : ${#fields.errors('__${fieldName}__')}" class="alert alert-danger"
-           th:text="${error}">
-        </p>
-
-    </div>
+    <th:block th:include="fragments/error.html :: frag(${fieldName})"/>
 </th:block>
 
 </html>

@@ -9,16 +9,24 @@ import java.time.LocalDateTime;
 @Table(name="Complaint")
 public class Complaint {
 
+	public static final int MAXIMUM_JUSTIFICATION_LENGTH = 3000;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="complaintId")
 	private int id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="ticketCollectorId")
 	private TicketCollector ticketCollector;
 
@@ -28,7 +36,10 @@ public class Complaint {
 	@Column(name="arrivalDate")
 	private LocalDateTime arrivalDate;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL
+	)
 	@JoinColumn(name="complaintStatusId")
 	private ComplaintStatus complaintStatus;
 

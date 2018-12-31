@@ -3,10 +3,14 @@ package bd2.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
@@ -36,7 +40,10 @@ public class LoginController {
 	}
 
 	@RequestMapping("/logout")
-	public String logout(Model model) {
+	public String logout(Model model, Authentication auth, HttpServletRequest request, HttpServletResponse response) {
+		if(auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
 		model.addAttribute("logout", true);
 		return "login";
 	}

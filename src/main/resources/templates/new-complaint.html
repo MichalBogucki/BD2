@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add new Complaint</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Reference Bootstrap files -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+        <form th:action="@{/home/complaints/new/add}"
+              method="POST" class="form-horizontal" th:object="${newComplaint}">
+
+            <th:block th:include="fragments/choose-collector.html :: frag('ticketCollector.id', *{ticketCollector.id})"/>
+            <br>
+            <textarea rows="8" cols="50" th:field="*{justification}"
+                   th:placeholder="'Write your justificaton here...(max. 3000 characters)'"/>
+            <br>
+            <th:block th:include="fragments/error.html :: frag('justification')"/>
+            <br>
+            <button type="submit"
+                    class="btn btn-primary block full-width m-b">Add complaint</button>
+
+        </form>
+
+        <br>
+        <a th:href="@{/home/complaints}" class="btn btn-success">Go back</a>
+    </div>
+</body>
+
+</html>
