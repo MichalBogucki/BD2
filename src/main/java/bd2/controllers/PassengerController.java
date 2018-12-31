@@ -73,16 +73,8 @@ public class PassengerController {
 			BindingResult result,
 			Model model
 	) {
-		if(newComplaint.getJustification().length() > Complaint.MAXIMUM_JUSTIFICATION_LENGTH) {
-			result.rejectValue("justification", ErrorCodes.JUSTIFICATION_TOO_LONG_ERRORCODE);
-		}
 
-		if(newComplaint.getTicketCollector().getId() == 0) {
-			result.rejectValue("ticketCollector.id", ErrorCodes.COLLECTOR_NOT_CHOSEN);
-		}
-
-		if(result.hasErrors()) {
-			model.addAttribute("ticketCollectors", idsNamesOfCollectorsMap);
+		if (!isNewComplaintValid(newComplaint, result, model)) {
 			return "new-complaint";
 		}
 
@@ -94,6 +86,22 @@ public class PassengerController {
 		} else {
 			return "redirect:/home/complaints";
 		}
+	}
+
+	private boolean isNewComplaintValid(@ModelAttribute("newComplaint") Complaint newComplaint, BindingResult result, Model model) {
+		if(newComplaint.getJustification().length() > Complaint.MAXIMUM_JUSTIFICATION_LENGTH) {
+			result.rejectValue("justification", ErrorCodes.JUSTIFICATION_TOO_LONG_ERRORCODE);
+		}
+
+		if(newComplaint.getTicketCollector().getId() == 0) {
+			result.rejectValue("ticketCollector.id", ErrorCodes.COLLECTOR_NOT_CHOSEN);
+		}
+
+		if(result.hasErrors()) {
+			model.addAttribute("ticketCollectors", idsNamesOfCollectorsMap);
+			return false;
+		}
+		return true;
 	}
 
 	private Passenger getPassengerByUserLogin(Authentication authentication) {
