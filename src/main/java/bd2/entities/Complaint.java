@@ -24,8 +24,8 @@ public class Complaint {
 	private Passenger passenger;
 
 	@ManyToOne(
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL
+			fetch = FetchType.EAGER
+//			cascade = CascadeType.ALL
 	)
 	@JoinColumn(name="ticketCollectorId")
 	private TicketCollector ticketCollector;
@@ -37,8 +37,7 @@ public class Complaint {
 	private LocalDateTime arrivalDate;
 
 	@ManyToOne(
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL
+			fetch = FetchType.EAGER
 	)
 	@JoinColumn(name="complaintStatusId")
 	private ComplaintStatus complaintStatus;

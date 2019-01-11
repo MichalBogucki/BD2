@@ -23,4 +23,6 @@ public class ErrorCodes {
 	public static final String JUSTIFICATION_TOO_LONG_ERRORCODE = "JUSTIFICATION_TOO_LONG_ERRORCODE";
 
 	public static final String COLLECTOR_NOT_CHOSEN = "COLLECTOR_NOT_CHOSEN";
+
+	public static final String JUSTIFICATION_EMPTY = "JUSTIFICATION_EMPTY";
 }

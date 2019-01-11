@@ -93,6 +93,10 @@ public class PassengerController {
 			result.rejectValue("justification", ErrorCodes.JUSTIFICATION_TOO_LONG_ERRORCODE);
 		}
 
+		if(newComplaint.getJustification().isEmpty()) {
+			result.rejectValue("justification", ErrorCodes.JUSTIFICATION_EMPTY);
+		}
+
 		if(newComplaint.getTicketCollector().getId() == 0) {
 			result.rejectValue("ticketCollector.id", ErrorCodes.COLLECTOR_NOT_CHOSEN);
 		}
