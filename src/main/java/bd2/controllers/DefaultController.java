@@ -22,6 +22,11 @@ public class DefaultController {
 		}
 	}
 
+	@RequestMapping("/home/ezoteriusz")
+	public String showEzoteriusz(Model model, Authentication authentication) {
+		return "ezoteriusz";
+	}
+
 	@RequestMapping("*")
 	public String showDefault() {
 		return "home";

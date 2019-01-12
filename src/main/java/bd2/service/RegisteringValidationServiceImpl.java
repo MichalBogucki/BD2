@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -180,7 +181,14 @@ public class RegisteringValidationServiceImpl implements RegisteringValidationSe
 			return;
 		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate birthDate = LocalDate.parse(birthDateString, formatter);
+
+		LocalDate birthDate = null;
+		try {
+			birthDate = LocalDate.parse(birthDateString, formatter);
+		} catch (DateTimeParseException e) {
+			result.rejectValue("birthDate", ErrorCodes.DATE_ERRORCODE);
+			return;
+		}
 
 		if(birthDate == null) {
 			result.rejectValue("birthDate", ErrorCodes.WRONG_FORMAT_ERRORCODE);

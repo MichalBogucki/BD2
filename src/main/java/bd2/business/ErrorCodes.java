@@ -25,4 +25,6 @@ public class ErrorCodes {
 	public static final String COLLECTOR_NOT_CHOSEN = "COLLECTOR_NOT_CHOSEN";
 
 	public static final String JUSTIFICATION_EMPTY = "JUSTIFICATION_EMPTY";
+
+	public static final String DATE_ERRORCODE = "DATE_ERRORCODE";
 }
