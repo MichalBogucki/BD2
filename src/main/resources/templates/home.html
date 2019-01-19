@@ -13,33 +13,62 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <link type="text/css"
+          rel="stylesheet"
+          href="../css/style.css"/>
 </head>
-    <body>
-        <h2>Welcome</h2>
-        <p>Passenger Panel</p>
-        <div sec:authorize="isAuthenticated()">
-            Logged in.
-        </div>
-        Authenticated username:
-        <div sec:authentication="name"></div>
-        <br/>
-        <div sec:authorize="hasRole('ROLE_PASSENGER')">
-            Passenger options:
-            <th:block th:include="fragments/passenger_options.html :: frag()"/>
-        </div>
-        <br/>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <form th:action="@{/admin}" method="POST">
-                <button type="submit" class="add-button">Admin site (only for admins)</button>
-            </form>
-        </div>
-        <br>
 
-        <a th:href="@{/logout}" class="btn btn-success">Logout</a>
+<body>
+<div class="container">
+    <div class="row>">
+        <th:block th:include="fragments/navbar.html :: nav()"/>
+    </div>
 
-    </body>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="row>">
+        <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-2">
+
+            <h2>Welcome</h2>
+            <p>Passenger Panel</p>
+            <div sec:authorize="isAuthenticated()">
+                Logged in.
+            </div>
+            Authenticated username:
+            <div sec:authentication="name"></div>
+            <br/>
+            <div sec:authorize="hasRole('ROLE_PASSENGER')">
+                Passenger options:
+                <th:block th:include="fragments/passenger_options.html :: frag()"/>
+            </div>
+            <br/>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/admin}" method="POST">
+                    <button type="submit" class="add-button">Admin site (only for admins)</button>
+                </form>
+                Ł
+            </div>
+            <br>
+
+            <a th:href="@{/logout}" class="btn btn-success">Logout</a>
+        </div>
+    </div>
+</div>
+<div class="page-footer">
+    <div th:replace="fragments/footer :: footer()"></div>
+</div>
+</body>
 </html>
 

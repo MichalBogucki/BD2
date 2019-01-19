@@ -9,84 +9,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Reference Bootstrap files -->
-    <link rel="stylesheet"
+    <link rel="stylesheet" Ł
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <link type="text/css"
+          rel="stylesheet"
+          href="../css/style.css"/>
 </head>
 
 <body>
+<div>
+    <div class="container">
+        <div class="row>">
+            <th:block th:include="fragments/navbar.html :: nav()"/>
+        </div>
 
-    <div>
+        <div class="row>">
+            <div class="col">
+                <br><br>
+            </div>
+        </div>
+        <div class="row>">
+            <div class="col">
+                <br><br>
+            </div>
+        </div>
 
-        <div id="loginbox" style="margin-top: 10px;"
-             class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+        <div class="row>">
+            <div id="loginbox" style="margin-top: 10px;"
+                 class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
 
-            <div class="panel panel-info">
+                <div class="panel panel-info">
 
-                <div class="panel-heading">
-                    <div class="panel-title">Register New Passenger</div>
+                    <div class="panel-heading">
+                        <div class="panel-title">Register New Passenger</div>
+                    </div>
+
+                    <div style="padding-top: 5px" class="panel-body">
+
+                        <!-- Login Form -->
+                        <form th:action="@{/register/processRegistration}"
+                              method="POST" class="form-horizontal" th:object="${registrationUser}">
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{login}, 'user', 'Login', 'login')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{name}, 'user', 'Name', 'name')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{surname}, 'user', 'Surname', 'surname')"/>
+
+                            <th:block
+                                    th:include="fragments/input_datepicker.html :: frag(*{birthDate}, 'calendar', '', 'birthDate')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{pesel}, 'user', 'PESEL(11 digits)', 'pesel')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{email}, 'envelope', 'Email Address', 'email')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{city}, 'home', 'City', 'city')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{street}, 'road', 'Street', 'street')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{buildingNumber}, 'home', 'Building Number(max.5 digits)', 'buildingNumber')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{flatNumber}, 'home', 'Flat Number(max.5 digits)', 'flatNumber')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{nationality}, 'home', 'Nationality', 'nationality')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{birthCountry}, 'home', 'Birth Country', 'birthCountry')"/>
+
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{birthCity}, 'home', 'Birth City', 'birthCity')"/>
+
+                            <th:block
+                                    th:include="fragments/input_string.html :: frag(*{phoneNumber}, 'phone', 'Phone Number(9 digits)', 'phoneNumber')"/>
+
+                            <th:block
+                                    th:include="fragments/input_password.html :: frag(*{password}, 'lock', 'Password', 'password')"/>
+
+                            <th:block
+                                    th:include="fragments/input_password.html :: frag(*{matchingPassword}, 'lock', 'Confirm Password', 'matchingPassword')"/>
+
+                            <button type="submit"
+                                    class="btn btn-primary block full-width m-b">Register
+                            </button>
+
+                        </form>
+
+                    </div>
+
                 </div>
 
-                <div style="padding-top: 5px" class="panel-body">
-
-                    <!-- Login Form -->
-                    <form th:action="@{/register/processRegistration}"
-                               method="POST" class="form-horizontal" th:object="${registrationUser}">
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{login}, 'user', 'Login', 'login')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{name}, 'user', 'Name', 'name')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{surname}, 'user', 'Surname', 'surname')"/>
-
-                        <th:block th:include="fragments/input_datepicker.html :: frag(*{birthDate}, 'calendar', '', 'birthDate')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{pesel}, 'user', 'PESEL(11 digits)', 'pesel')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{email}, 'envelope', 'Email Address', 'email')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{city}, 'home', 'City', 'city')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{street}, 'road', 'Street', 'street')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{buildingNumber}, 'home', 'Building Number(max.5 digits)', 'buildingNumber')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{flatNumber}, 'home', 'Flat Number(max.5 digits)', 'flatNumber')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{nationality}, 'home', 'Nationality', 'nationality')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{birthCountry}, 'home', 'Birth Country', 'birthCountry')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{birthCity}, 'home', 'Birth City', 'birthCity')"/>
-
-                        <th:block th:include="fragments/input_string.html :: frag(*{phoneNumber}, 'phone', 'Phone Number(9 digits)', 'phoneNumber')"/>
-
-                        <th:block th:include="fragments/input_password.html :: frag(*{password}, 'lock', 'Password', 'password')"/>
-
-                        <th:block th:include="fragments/input_password.html :: frag(*{matchingPassword}, 'lock', 'Confirm Password', 'matchingPassword')"/>
-
-                        <button type="submit"
-                                class="btn btn-primary block full-width m-b">Register</button>
-
-                    </form>
-
-                </div>
+                <!--<form th:action="@{/login}" method="POST">-->
+                <!--<button type="submit" class="add-button, btn btn-primary" aria-pressed="true">-->
+                <!--Back to Login Page-->
+                <!--</button>-->
+                <!--</form>-->
 
             </div>
 
-            <!--<form th:action="@{/login}" method="POST">-->
-                <!--<button type="submit" class="add-button, btn btn-primary" aria-pressed="true">-->
-                    <!--Back to Login Page-->
-                <!--</button>-->
-            <!--</form>-->
-
         </div>
-
+        <div class="row">
+            <div class="footer">
+                <div th:replace="fragments/footer :: footer()"></div>
+            </div>
+        </div>
     </div>
+
+</div>
+
 
 </body>
 

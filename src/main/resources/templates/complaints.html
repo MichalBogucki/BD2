@@ -19,47 +19,76 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-
+    <link type="text/css"
+          rel="stylesheet"
+          href="../css/style.css"/>
 </head>
 
+
 <body>
+<div class="container">
+    <div class="row>">
+        <div class="col">
+            <th:block th:include="fragments/navbar.html :: nav()"/>
+        </div>
+    </div>
 
-    <th:block th:if="${complaints.size()} == 0">
-        <p>No complaints.</p>
-    </th:block>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
 
-    <table th:if="${complaints.size()} > 0">
-        <tr>
-            <th>Arrival Date</th>
-            <th>Justification</th>
-            <th>Ticket Collector</th>
-            <th>Complaint Status</th>
-        </tr>
-        <tr th:each="complaint : ${complaints}">
-            <th:block th:object="${complaint}">
-                <td th:text="*{arrivalDate.toLocalDate()}"></td>
-                <td th:text="*{justification}"></td>
-                <td th:text="*{ticketCollector.name} + ' ' + *{ticketCollector.surname}"></td>
-                <td th:text="*{complaintStatus.complaintStatus}"></td>
-                <!--<td>-->
-                <!--<form th:action="'updatePassenger/' + *{id}">-->
-                <!--<button type="submit" class="add-button">Update Passenger</button>-->
-                <!--</form>-->
-                <!--<form th:action="'deletePassenger/' + *{id}">-->
-                <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
-                <!--type="submit"-->
-                <!--class="add-button">Delete Passenger</button>-->
-                <!--</form>-->
-                <!--</td>-->
+    <div class="row>">
+        <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-2">
+            <th:block th:if="${complaints.size()} == 0">
+                <p>No complaints.</p>
             </th:block>
-        </tr>
-    </table>
 
-    <br/>
-    <a th:href="@{/home}" class="btn btn-success">Go back</a>
+            <table th:if="${complaints.size()} > 0">
+                <tr>
+                    <th>Arrival Date</th>
+                    <th>Justification</th>
+                    <th>Ticket Collector</th>
+                    <th>Complaint Status</th>
+                </tr>
+                <tr th:each="complaint : ${complaints}">
+                    <th:block th:object="${complaint}">
+                        <td th:text="*{arrivalDate.toLocalDate()}"></td>
+                        <td th:text="*{justification}"></td>
+                        <td th:text="*{ticketCollector.name} + ' ' + *{ticketCollector.surname}"></td>
+                        <td th:text="*{complaintStatus.complaintStatus}"></td>
+                        <!--<td>-->
+                        <!--<form th:action="'updatePassenger/' + *{id}">-->
+                        <!--<button type="submit" class="add-button">Update Passenger</button>-->
+                        <!--</form>-->
+                        <!--<form th:action="'deletePassenger/' + *{id}">-->
+                        <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
+                        <!--type="submit"-->
+                        <!--class="add-button">Delete Passenger</button>-->
+                        <!--</form>-->
+                        <!--</td>-->
+                    </th:block>
+                </tr>
+            </table>
+
+            <br/>
+            <a th:href="@{/home}" class="btn btn-success">Go back</a>
+
+        </div>
+    </div>
+    <div class="page-footer">
+        <div th:replace="fragments/footer :: footer()"></div>
+    </div>
+</div>
 
 </body>
 

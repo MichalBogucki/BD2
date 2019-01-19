@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<th:block th:fragment="nav()">
+<nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">
+                <span class="glyphicon glyphicon-road" aria-hidden="true"  style="font-size: 20px"></span>Ticket Control System</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                <li>
+                    <a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home page</a>
+                </li>
+                <li>
+                    <a href="/home/fines"> <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> My Fines</a>
+                <li>
+                    <a href="/home/complaints"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> My complaints</a>
+                </li>
+                <li>
+                    <a href="/home/complaints/new"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New complaint</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</th:block>
+</html>

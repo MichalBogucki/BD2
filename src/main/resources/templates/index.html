@@ -4,18 +4,37 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <title>Something went wrong...</title>
 
     <link type="text/css"
           rel="stylesheet"
           th:href="@{/css/style.css}"/>
 
+
+    <th:block th:include="fragments/navbar.html :: nav()"/>
 </head>
 
 <body>
-
+<div class="container">
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row>">
+        <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-2">
 <h2> Something went wrong. </h2>
 
+<div th:replace="fragments/footer :: footer()"></div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

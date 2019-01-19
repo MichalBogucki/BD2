@@ -19,50 +19,77 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <link type="text/css"
+          rel="stylesheet"
+          href="../css/style.css"/>
 
+    <div class="container">
+        <div class="row>">
+            <th:block th:include="fragments/navbar.html :: nav()"/>
+        </div>
+    </div>
 </head>
 
 <body>
+<div class="container">
 
-    <th:block th:if="${fines.size()} == 0">
-        <p>No fines.</p>
-    </th:block>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row>">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
 
-    <table th:if="${fines.size()} > 0">
-        <tr>
-            <th>Writing Date</th>
-            <th>Fine Amount</th>
-            <th>Ticket Collector</th>
-            <th>Fine Type</th>
-            <th>Payment Status</th>
-        </tr>
-        <tr th:each="fine : ${fines}">
-            <th:block th:object="${fine}">
-                <td th:text="*{writingDate.toLocalDate()}"></td>
-                <td th:text="*{fineAmountWithInterests}"></td>
-                <td th:text="*{ticketCollector.name} + ' ' + *{ticketCollector.surname}"></td>
-                <td th:text="*{fineType.fineType}"></td>
-                <td th:text="*{paymentStatus.paymentStatus}"></td>
-                <!--<td>-->
-                <!--<form th:action="'updatePassenger/' + *{id}">-->
-                <!--<button type="submit" class="add-button">Update Passenger</button>-->
-                <!--</form>-->
-                <!--<form th:action="'deletePassenger/' + *{id}">-->
-                <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
-                <!--type="submit"-->
-                <!--class="add-button">Delete Passenger</button>-->
-                <!--</form>-->
-                <!--</td>-->
+    <div class="row>">
+        <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-2">
+            <th:block th:if="${fines.size()} == 0">
+                <p>No fines.</p>
             </th:block>
-        </tr>
-    </table>
 
-    <br/>
-    <a th:href="@{/home}" class="btn btn-success">Go back</a>
+            <table th:if="${fines.size()} > 0">
+                <tr>
+                    <th>Writing Date</th>
+                    <th>Fine Amount</th>
+                    <th>Ticket Collector</th>
+                    <th>Fine Type</th>
+                    <th>Payment Status</th>
+                </tr>
+                <tr th:each="fine : ${fines}">
+                    <th:block th:object="${fine}">
+                        <td th:text="*{writingDate.toLocalDate()}"></td>
+                        <td th:text="*{fineAmountWithInterests}"></td>
+                        <td th:text="*{ticketCollector.name} + ' ' + *{ticketCollector.surname}"></td>
+                        <td th:text="*{fineType.fineType}"></td>
+                        <td th:text="*{paymentStatus.paymentStatus}"></td>
+                        <!--<td>-->
+                        <!--<form th:action="'updatePassenger/' + *{id}">-->
+                        <!--<button type="submit" class="add-button">Update Passenger</button>-->
+                        <!--</form>-->
+                        <!--<form th:action="'deletePassenger/' + *{id}">-->
+                        <!--<button th:onclick="'return confirm(\'Are you sure you want to delete ' + *{name} + '\ ' + *{surname}  + '?\');'"-->
+                        <!--type="submit"-->
+                        <!--class="add-button">Delete Passenger</button>-->
+                        <!--</form>-->
+                        <!--</td>-->
+                    </th:block>
+                </tr>
+            </table>
 
+            <br/>
+            <a th:href="@{/home}" class="btn btn-success">Go back</a>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div th:replace="fragments/footer :: footer()"></div>
+</div>
 </body>
 
 </html>
